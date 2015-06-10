@@ -1,4 +1,4 @@
-require.def('redbuttonhtml/appui/components/cheesecake/utils/idutils',
+require.def('cheesecake/utils/idutils',
     [],
     function () {
         'use strict';

@@ -1,11 +1,9 @@
 require(
     [
-        "redbuttonhtml/appui/components/cheesecake/cheesecakeactions",
-        "redbuttonhtml/appui/components/cheesecake/adapters/actions/navigatetourl",
-        "antie/widgets/widget",
-        "antie/events/event"
+        "cheesecake/cheesecakeactions",
+        "mocks/widget"
     ],
-    function(CheesecakeActions, NavigateToUrl, Widget, Event) {
+    function(CheesecakeActions, Widget) {
         'use strict';
 
         describe("cheesecake actions", function() {
@@ -32,20 +30,20 @@ require(
             });
 
             it("should remove actions correctly", function() {
-                CheesecakeActions.addAction("navigatetourl", NavigateToUrl);
-                CheesecakeActions.removeAction("navigatetourl");
-                expect(CheesecakeActions.hasAction("navigatetourl")).toBe(false);
+                CheesecakeActions.addAction("testAction", actionForTesting);
+                CheesecakeActions.removeAction("testAction");
+                expect(CheesecakeActions.hasAction("testAction")).toBe(false);
             });
 
             it("should add actions correctly", function() {
-                CheesecakeActions.addAction("hello", NavigateToUrl);
+                CheesecakeActions.addAction("hello", actionForTesting);
                 expect(CheesecakeActions.hasAction("hello")).toBeTruthy();
             });
 
             it("should pass the widget, parameters and getActions method", function () {
                 CheesecakeActions.addAction("testActionArguments", actionForTesting);
 
-                var widgetToBind = new Widget("testWidget");
+                var widgetToBind = new Widget();
                 var actionData = [
                     {
                         "eventType": "testEvent",
@@ -56,10 +54,9 @@ require(
                     }
                 ];
 
-                // make sure this is called
                 CheesecakeActions.bindActionsToWidget(widgetToBind, actionData);
 
-                widgetToBind.fireEvent(new Event("testEvent"));
+                widgetToBind.fireEvent("testEvent");
 
                 CheesecakeActions.removeAction("testActionArguments");
 

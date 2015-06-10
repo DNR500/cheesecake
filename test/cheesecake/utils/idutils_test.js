@@ -1,6 +1,6 @@
 require(
     [
-        'redbuttonhtml/appui/components/cheesecake/utils/idutils'
+        'cheesecake/utils/idutils'
     ],
     function (IdUtils) {
         'use strict';

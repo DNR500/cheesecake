@@ -1,4 +1,4 @@
-require.def('redbuttonhtml/appui/components/cheesecake/cheesecakemappings',
+require.def('cheesecake/cheesecakemappings',
     [ ],
     function () {
         'use strict';

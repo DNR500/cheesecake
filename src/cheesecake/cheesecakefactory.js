@@ -1,15 +1,13 @@
-require.def('redbuttonhtml/appui/components/cheesecake/cheesecakefactory',
+require.def('cheesecake/cheesecakefactory',
     [
-        'antie/widgets/container',
-        'antie/widgets/verticallist',
-        'redbuttonhtml/appui/components/cheesecake/cheesecakerecipes',
-        'redbuttonhtml/appui/components/cheesecake/utils/idutils',
-        'redbuttonhtml/appui/components/cheesecake/cheesecakeactions',
-        'redbuttonhtml/appui/components/cheesecake/utils/recipeutils',
-        'redbuttonhtml/appui/components/cheesecake/cheesecakestats',
-        'redbuttonhtml/appui/components/cheesecake/cheesecakemappings'
+        'cheesecake/cheesecakerecipes',
+        'cheesecake/utils/idutils',
+        'cheesecake/cheesecakeactions',
+        'cheesecake/utils/recipeutils',
+        'cheesecake/cheesecakestats',
+        'cheesecake/cheesecakemappings'
     ],
-    function (Container, VerticalList, CheeseCakeRecipes, IdUtils, CheeseCakeActions, RecipeUtils, cheeseCakeStats, cheeseCakeMappings) {
+    function ( CheeseCakeRecipes, IdUtils, CheeseCakeActions, RecipeUtils, cheeseCakeStats, cheeseCakeMappings) {
         'use strict';
 
         return {

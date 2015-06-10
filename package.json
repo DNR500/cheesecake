@@ -1,0 +1,28 @@
+{
+  "name": "Cheesecake",
+  "version": "0.0.1",
+  "description": "View abstraction framework - simple framework that allows json templates to be used with any frontend framework",
+  "scripts": {
+    "test": "grunt check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "*"
+  },
+  "keywords": [
+    "Node",
+    "Express"
+  ],
+  "author": "Nathan Richards",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-plato": "^1.2.1",
+    "grunt-jsonlint": "^1.0.4",
+    "install": "^0.1.8",
+    "npm": "^2.11.1",
+    "grunt-contrib-jasmine": "^0.8.2"
+  }
+}

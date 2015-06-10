@@ -1,6 +1,6 @@
-require.def('redbuttonhtml/appui/components/cheesecake/cheesecakeactions',
+require.def('cheesecake/cheesecakeactions',
     [
-        'redbuttonhtml/appui/components/cheesecake/cheesecakebinding'
+        'cheesecake/cheesecakebinding'
     ],
     function (CheeseCakeBindings) {
         'use strict';

@@ -1,7 +1,7 @@
-require.def('redbuttonhtml/appui/components/cheesecake/cheesecakebinding',
+require.def('cheesecake/cheesecakebinding',
     [
-        'redbuttonhtml/appui/components/cheesecake/cheesecakestats',
-        'redbuttonhtml/appui/components/cheesecake/cheesecakemappings'
+        'cheesecake/cheesecakestats',
+        'cheesecake/cheesecakemappings'
     ],
     function (cheeseCakeStats, cheeseCakeMappings) {
         'use strict';
