@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
     'use strict';
     var jsFiles = ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'];
-    var jsonFiles = ['package.json', 'src/schemas/**/*.json'];
+    var jsonFiles = ['package.json', '.jshintrc'];
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
