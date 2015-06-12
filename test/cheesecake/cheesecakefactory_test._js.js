@@ -1,18 +1,13 @@
-//require(
-//    [
-//        "redbuttonhtml/appui/components/cheesecake/cheesecakefactory",
-//        "antie/widgets/container",
-//        "antie/widgets/label",
-//        "antie/application",
-//        "antie/widgets/button",
-//        "redbuttonhtml/appui/components/cheesecake/adapters/cheesecakerbplusadapter",
-//        "redbuttonhtml/appui/components/cheesecake/cheesecakemappings"
-//    ],
-//    function (CheesecakeFactory, Container, Label, Application, Button, cheeseCakeAdapter, cheeseCakeMappings) {
-//        "use strict";
-//
-//        describe("Cheesecake Factory", function () {
-//
+require(
+    [
+        "cheesecake/cheesecakefactory",
+        "cheesecake/cheesecakemappings"
+    ],
+    function (CheesecakeFactory, cheeseCakeMappings, Container, Label, Application, Button, cheeseCakeAdapter) {
+        "use strict";
+
+        describe("Cheesecake Factory", function () {
+
 //            var value;
 //
 //            var testUniqueId;
@@ -76,8 +71,8 @@
 //                    ]
 //                }
 //            };
-//
-//            it("should pass the correct parameters to its recipes", function() {
+
+            it("should pass the correct parameters to its recipes", function() {
 //                var cheesecake_Label = {
 //                    "cheesecake": {
 //                        "id": "settingsPanel",
@@ -96,9 +91,10 @@
 //                expect(testChildWidgetData.randomParam).toBe("some value");
 //                expect(testParent).toBe(result);
 //                expect(testPubSub).toBe(mockPubSub);
-//            });
-//
-//            it("should be able to make a cheesecake from a recipe", function () {
+                  expect(true).toBeFalsy();
+            });
+
+            it("should be able to make a cheesecake from a recipe", function () {
 //                var cheesecake_Label = {
 //                    "cheesecake": {
 //                        "id": "settingsPanel",
@@ -121,10 +117,11 @@
 //                expect(label instanceof Label).toBeTruthy();
 //                expect(label.getText()).toEqual(labelText);
 //                expect(label.hasClass(labelCssClass)).toBeTruthy();
-//
-//            });
-//
-//            it("should correctly make a cheesecake when the data has grandchildren", function () {
+                expect(true).toBeFalsy();
+
+            });
+
+            it("should correctly make a cheesecake when the data has grandchildren", function () {
 //                var cheesecake_ContainerWithLabel = {
 //                    "cheesecake": {
 //                        "id": "settingsPanel",
@@ -154,11 +151,12 @@
 //                expect(label instanceof Label).toBeTruthy();
 //                expect(label.getText()).toEqual(labelText);
 //                expect(label.hasClass(labelCssClass)).toBeTruthy();
-//
-//            });
-//
-//            describe("mappings", function() {
-//                it("should allow the cheesecake parent contain to be changed", function () {
+                expect(true).toBeFalsy();
+
+            });
+
+            describe("mappings", function() {
+                it("should allow the cheesecake parent contain to be changed", function () {
 //                    var cheesecake_ContainerAsButton = {
 //                        "cheesecake": {
 //                            "id": "settingsPanel",
@@ -183,10 +181,11 @@
 //                    expect(result instanceof Button).toBeTruthy();
 //
 //                    CheesecakeFactory.mappings().reset();
-//
-//                });
-//
-//                it("should allow the appendChild method on the view to be specified", function () {
+                    expect(true).toBeFalsy();
+
+                });
+
+                it("should allow the appendChild method on the view to be specified", function () {
 //                    var cheesecake_Container = {
 //                        "cheesecake": {
 //                            "id": "settingsPanel",
@@ -214,10 +213,11 @@
 //                    expect(functionIsCalled).toBeTruthy();
 //
 //                    CheesecakeFactory.mappings().reset();
-//
-//                });
-//
-//                it("should allow the addEventListener method on the view to be specified", function () {
+                    expect(true).toBeFalsy();
+
+                });
+
+                it("should allow the addEventListener method on the view to be specified", function () {
 //                    mockApplication();
 //
 //                    var cheesecake_Container = {
@@ -251,10 +251,10 @@
 //                    expect(functionIsCalled).toBeTruthy();
 //
 //                    CheesecakeFactory.mappings().reset();
-//
-//                });
-//
-//                it("should allow the removeEventListener method on the view to be specified", function () {
+                    expect(true).toBeFalsy();
+                });
+
+                it("should allow the removeEventListener method on the view to be specified", function () {
 //                    mockApplication();
 //
 //                    var cheesecake_Container = {
@@ -290,11 +290,11 @@
 //                    expect(functionIsCalled).toBeTruthy();
 //
 //                    CheesecakeFactory.mappings().reset();
-//
-//                });
-//            });
-//
-//            describe("action calling", function(){
+                    expect(true).toBeFalsy();
+                });
+            });
+
+            describe("action calling", function(){
 //                var result;
 //                var button;
 //
@@ -308,25 +308,27 @@
 //                afterEach(function() {
 //                    value = undefined;
 //                });
-//
-//                it("should add an action to a cheesecake widget that is executed when the specified event is fired", function () {
-//
+
+                it("should add an action to a cheesecake widget that is executed when the specified event is fired", function () {
+
 //                    expect(button instanceof Button).toBeTruthy();
 //                    button.select();
 //
 //                    expect(value).toBe("parameter passed to action function");
-//                });
-//
-//                it("should remove an action the unbindCheeseCake method is called", function () {
+                    expect(true).toBeFalsy();
+                });
+
+                it("should remove an action the unbindCheeseCake method is called", function () {
 //                    CheesecakeFactory.unbindCheeseCake(result);
 //
 //                    button.select();
 //
 //                    expect(value).toBeUndefined();
-//                });
-//            });
-//
-//            it("should make a stats call when a countername is featured and event is fired then remove stats call on unbind ", function () {
+                    expect(true).toBeFalsy();
+                });
+            });
+
+            it("should make a stats call when a countername is featured and event is fired then remove stats call on unbind ", function () {
 //                mockApplication();
 //
 //                var counterName;
@@ -376,17 +378,19 @@
 //                expect(counterName).toBeNull();
 //
 //                value = undefined;
-//            });
-//
-//            it("should make the options object available via the options method", function () {
+                expect(true).toBeFalsy();
+            });
+
+            it("should make the options object available via the options method", function () {
 //                mockApplication();
 //
 //                expect(CheesecakeFactory.mappings()).toBe(cheeseCakeMappings);
-//
-//            });
-//
-//
-//
-//        });
-//    }
-//);
+                expect(true).toBeFalsy();
+
+            });
+
+
+
+        });
+    }
+);
