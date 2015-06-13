@@ -1,4 +1,4 @@
-require.def('mocks/button', [
+require.def('mocks/ui/button', [
 //    'mocks/container'
 ],
     function (Container) {

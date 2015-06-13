@@ -1,7 +1,7 @@
 require(
     [
         "cheesecake/cheesecakeactions",
-        "mocks/widget"
+        "mocks/ui/widget"
     ],
     function(CheesecakeActions, Widget) {
         'use strict';

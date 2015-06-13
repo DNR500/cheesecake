@@ -1,4 +1,4 @@
-require.def('mocks/label', [
+require.def('mocks/ui/label', [
 //    'mocks/widget'
 ],
     function (Widget) {

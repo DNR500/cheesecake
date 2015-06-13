@@ -1,4 +1,4 @@
-require.def('mocks/widget', [ ],
+require.def('mocks/ui/widget', [ ],
     function () {
         'use strict';
         return function () {
