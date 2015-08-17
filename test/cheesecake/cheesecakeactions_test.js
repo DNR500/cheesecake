@@ -1,9 +1,9 @@
 require(
     [
         "cheesecake/cheesecakeactions",
-        "mocks/ui/widget"
+        "mocks/ui/genericrecipes"
     ],
-    function(CheesecakeActions, Widget) {
+    function(CheesecakeActions, GenericRecipes) {
         'use strict';
 
         describe("cheesecake actions", function() {
@@ -43,7 +43,7 @@ require(
             it("should pass the widget, parameters and getActions method", function () {
                 CheesecakeActions.addAction("testActionArguments", actionForTesting);
 
-                var widgetToBind = new Widget();
+                var widgetToBind = GenericRecipes.getWidget();
                 var actionData = [
                     {
                         "eventType": "testEvent",

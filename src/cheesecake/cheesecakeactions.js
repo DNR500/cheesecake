@@ -1,8 +1,9 @@
 require.def('cheesecake/cheesecakeactions',
     [
-        'cheesecake/cheesecakebinding'
+        'cheesecake/cheesecakebinding',
+        'cheesecake/cheesecakemappings'
     ],
-    function (CheeseCakeBindings) {
+    function (CheeseCakeBindings, CheeseCakeMappings) {
         'use strict';
 
         var actions = {};
@@ -36,15 +37,14 @@ require.def('cheesecake/cheesecakeactions',
                 for (var i = 0; i < children.length; i++) {
                     var widget = children[i];
                     CheeseCakeBindings.unbindWidget(widget, actions);
-
-                    if (widget.getChildWidgets) {
-                        this._iterateChildren(widget.getChildWidgets());
+                    if (CheeseCakeMappings.hasChildren(widget)) {
+                        this._iterateChildren(CheeseCakeMappings.getChildren(widget));
                     }
                 }
             },
 
             unbindCheeseCake: function (cheesecakecontainer) {
-                this._iterateChildren(cheesecakecontainer.getChildWidgets());
+                this._iterateChildren(CheeseCakeMappings.getChildren(cheesecakecontainer));
             },
 
             reset: function () {
