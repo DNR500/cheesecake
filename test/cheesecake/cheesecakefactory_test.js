@@ -14,21 +14,21 @@ require(
             var testChildWidgetData;
             var testParent;
             var testPubSub;
-            var actionForTesting = function(parameters) {
+            var customActionForTesting = function(parameters) {
                 return function(){
                     actionValue = parameters.some_value;
                 };
             };
 
-            var recipeForTestingParameters = function(uniqueId, data, parent, pubSub) {
+            var customRecipeForTesting = function(uniqueId, data, parent, pubSub) {
                 testUniqueId = uniqueId;
                 testChildWidgetData = data;
                 testParent = parent;
                 testPubSub = pubSub;
             };
 
-            CheesecakeFactory.addAction("customActionForTesting", actionForTesting);
-            CheesecakeFactory.addRecipe("customRecipeForTesting", recipeForTestingParameters);
+            CheesecakeFactory.addAction("customActionForTesting", customActionForTesting);
+            CheesecakeFactory.addRecipe("customRecipeForTesting", customRecipeForTesting);
 
             CheesecakeFactory.addRecipe("container", GenericRecipes.getContainer());
             CheesecakeFactory.addRecipe("label", GenericRecipes.getLabel());
@@ -41,6 +41,7 @@ require(
                         "id": "settingsPanel",
                         "children": [
                             {
+                                "id": "ourSpecialTestWidget",
                                 "recipeName": "customRecipeForTesting",
                                 "randomParam": "some value"
                             }
@@ -50,7 +51,8 @@ require(
 
                 var result = CheesecakeFactory.createCheeseCake(cheesecake_Label);
 
-                expect(testUniqueId).toBe("settingsPanel-parent-0");
+                expect(result.id).toBe("settingsPanel");
+                expect(testUniqueId).toBe("ourSpecialTestWidget");
                 expect(testChildWidgetData.randomParam).toBe("some value");
                 expect(testParent).toBe(result);
             });

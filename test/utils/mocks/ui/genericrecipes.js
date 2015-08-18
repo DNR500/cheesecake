@@ -36,7 +36,7 @@ require.def("mocks/ui/genericrecipes",
 
         return {
           getWidget: function() {
-              return basicWidget;s
+              return basicWidget;
           },
           getLabel: function() {
               return function (uniqueId, data) {

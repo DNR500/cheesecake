@@ -1,13 +1,12 @@
 require.def('cheesecake/cheesecakefactory',
     [
         'cheesecake/cheesecakerecipes',
-        'cheesecake/utils/idutils',
         'cheesecake/cheesecakeactions',
         'cheesecake/utils/recipeutils',
         'cheesecake/cheesecakestats',
         'cheesecake/cheesecakemappings'
     ],
-    function ( CheeseCakeRecipes, IdUtils, CheeseCakeActions, RecipeUtils, cheeseCakeStats, cheeseCakeMappings) {
+    function ( CheeseCakeRecipes, CheeseCakeActions, RecipeUtils, cheeseCakeStats, cheeseCakeMappings) {
         'use strict';
 
         return {
@@ -20,17 +19,16 @@ require.def('cheesecake/cheesecakefactory',
                 return element instanceof Array && element.length > 0;
             },
 
-            _processChildren: function (parent, childrenData, idGenerator) {
+            _processChildren: function (parent, childrenData) {
                 for (var i = 0; i < childrenData.length; i++) {
                     var childWidgetData = childrenData[i];
                     var recipe = CheeseCakeRecipes.getRecipe(childWidgetData.recipeName);
 
-                    var childWidgetId = idGenerator(parent.id);
+                    var childWidgetId = childWidgetData.id || undefined;
                     var childWidget = recipe(childWidgetId, childWidgetData, parent, this.pubSub);
 
                     if (this._isNoneEmptyArray(childWidgetData.children)) {
-                        this._processChildren(childWidget, childWidgetData.children,
-                            IdUtils.createIdGenerator("child"));
+                        this._processChildren(childWidget, childWidgetData.children);
                     }
                     if (this._isNoneEmptyArray(childWidgetData.actions)) {
                         CheeseCakeActions.bindActionsToWidget(childWidget,
@@ -52,9 +50,7 @@ require.def('cheesecake/cheesecakefactory',
                 var recipe = CheeseCakeRecipes.getRecipe(cheeseCakeMappings.cheeseCakeRecipeName());
                 var cheeseCakeContainer = recipe(cheeseCakeId, data.cheesecake);
 
-                var parentIdGenerator = IdUtils.createIdGenerator("parent");
-
-                this._processChildren(cheeseCakeContainer, data.cheesecake.children, parentIdGenerator);
+                this._processChildren(cheeseCakeContainer, data.cheesecake.children);
 
                 return cheeseCakeContainer;
             },
