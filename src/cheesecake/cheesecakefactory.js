@@ -11,10 +11,6 @@ require.def('cheesecake/cheesecakefactory',
 
         return {
 
-            registerPubSub:function (pubSub) {
-                this.pubSub = pubSub;
-            },
-
             _isNoneEmptyArray: function (element) {
                 return element instanceof Array && element.length > 0;
             },
@@ -25,7 +21,7 @@ require.def('cheesecake/cheesecakefactory',
                     var recipe = CheeseCakeRecipes.getRecipe(childWidgetData.recipeName);
 
                     var childWidgetId = childWidgetData.id || undefined;
-                    var childWidget = recipe(childWidgetId, childWidgetData, parent, this.pubSub);
+                    var childWidget = recipe(childWidgetId, childWidgetData, parent);
 
                     if (this._isNoneEmptyArray(childWidgetData.children)) {
                         this._processChildren(childWidget, childWidgetData.children);

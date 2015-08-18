@@ -13,18 +13,17 @@ require(
             var testUniqueId;
             var testChildWidgetData;
             var testParent;
-            var testPubSub;
+
             var customActionForTesting = function(parameters) {
                 return function(){
                     actionValue = parameters.some_value;
                 };
             };
 
-            var customRecipeForTesting = function(uniqueId, data, parent, pubSub) {
+            var customRecipeForTesting = function(uniqueId, data, parent) {
                 testUniqueId = uniqueId;
                 testChildWidgetData = data;
                 testParent = parent;
-                testPubSub = pubSub;
             };
 
             CheesecakeFactory.addAction("customActionForTesting", customActionForTesting);
