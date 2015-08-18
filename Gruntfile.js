@@ -17,6 +17,23 @@ module.exports = function(grunt) {
             }
         },
 
+        clean: {
+          build: ["build/"]
+        },
+
+        copy: {
+          srcToBuild:{
+              files: [
+                  {
+                      expand: true,
+                      cwd: 'src',
+                      src: '**',
+                      dest: 'build/uncompressed'
+                  }
+              ]
+          }
+        },
+
         jsonlint: {
             project: {
                 src: jsonFiles
@@ -44,12 +61,14 @@ module.exports = function(grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-jsonlint');
     grunt.loadNpmTasks("grunt-contrib-jasmine");
     grunt.loadNpmTasks('grunt-plato');
 
-    grunt.registerTask('check', ['jsonlint', 'jshint']);
-    grunt.registerTask('build', ['check']);
-    grunt.registerTask('default', ['check']);
+    grunt.registerTask('test', ['jsonlint', 'jshint', 'jasmine']);
+    grunt.registerTask('build', ['test', 'clean:build', 'copy:srcToBuild']);
+    grunt.registerTask('default', ['test']);
 
 };
