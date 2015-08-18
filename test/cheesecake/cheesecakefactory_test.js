@@ -114,6 +114,22 @@ require(
                 expect(label.cssClasses[0]).toEqual("title");
             });
 
+            it("should be allow a cheesecake to be a simple childless widget", function () {
+                var cheesecake_Label = {
+                    "cheesecake": {
+                        "id": "settingsPanel",
+                        "cssClasses": ["title"],
+                        "recipeName": "label",
+                        "text": "Which service would you like to launch when you press the Red Button?"
+                    }
+                };
+                var result = CheesecakeFactory.createCheeseCake(cheesecake_Label);
+
+                expect(result.id).toEqual("settingsPanel");
+                expect(result.getText()).toEqual("Which service would you like to launch when you press the Red Button?");
+                expect(result.cssClasses[0]).toEqual("title");
+            });
+
             describe("mappings", function() {
                 it("should allow the appendChild method on the view to be specified", function () {
                     var cheesecake_Container = {

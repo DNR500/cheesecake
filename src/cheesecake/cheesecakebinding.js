@@ -25,11 +25,13 @@ require.def('cheesecake/cheesecakebinding',
             unbindWidget: function (widget, actions) {
                 var actionsHistoryItem = history[widget.id];
                 if (actionsHistoryItem) {
-                    for (var i = 0; i < actionsHistoryItem.actions.length; i++) {
+                    for (var i = 0, len = actionsHistoryItem.actions.length; i < len; i++) {
                         var action = actionsHistoryItem.actions[i];
-                        cheeseCakeMappings.removeEventListener(widget, action.eventType, actions[action.command](action.parameters));
+                        var actionCommand = actions[action.command](action.parameters);
+                        cheeseCakeMappings.removeEventListener(widget, action.eventType, actionCommand);
                         if (action.countername) {
-                            cheeseCakeMappings.removeEventListener(widget, action.eventType, cheeseCakeStats.makesStatsCall(action.countername));
+                            var statsFunction = cheeseCakeStats.makesStatsCall(action.countername);
+                            cheeseCakeMappings.removeEventListener(widget, action.eventType, statsFunction);
                         }
                     }
                 }

@@ -19,7 +19,6 @@ require.def('cheesecake/cheesecakemappings',
             widget.removeEventListener(eventType, actionFunction);
         };
 
-        var _defaultCheeseCakeRecipeName = "container";
         var _appendChild = appendChildDefault;
         var _getChildren = getChildrenDefault;
         var _hasChildren = hasChildrenDefault;
@@ -27,7 +26,6 @@ require.def('cheesecake/cheesecakemappings',
         var _removeEventListener = removeEventListenerDefault;
 
         var setDefaultValues = function() {
-            _defaultCheeseCakeRecipeName = "container";
             _appendChild = appendChildDefault;
             _getChildren = getChildrenDefault;
             _hasChildren = hasChildrenDefault;
@@ -36,9 +34,6 @@ require.def('cheesecake/cheesecakemappings',
         };
 
         return {
-            setCheeseCakeRecipeName : function (newName) {
-                _defaultCheeseCakeRecipeName = newName;
-            },
             setAppendChildFunction : function (newFunction) {
                 _appendChild= newFunction;
             },
@@ -56,9 +51,6 @@ require.def('cheesecake/cheesecakemappings',
             },
             reset : function () {
                 setDefaultValues();
-            },
-            cheeseCakeRecipeName: function() {
-                return _defaultCheeseCakeRecipeName;
             },
             appendChild: function () {
                 _appendChild.apply(this, arguments);

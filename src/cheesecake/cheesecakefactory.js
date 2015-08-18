@@ -16,7 +16,7 @@ require.def('cheesecake/cheesecakefactory',
             },
 
             _processChildren: function (parent, childrenData) {
-                for (var i = 0; i < childrenData.length; i++) {
+                for (var i = 0, len = childrenData.length; i < len; i++) {
                     var childWidgetData = childrenData[i];
                     var recipe = CheeseCakeRecipes.getRecipe(childWidgetData.recipeName);
 
@@ -40,13 +40,14 @@ require.def('cheesecake/cheesecakefactory',
             },
 
             createCheeseCake: function (data) {
-                var cheeseCakeId = data.cheesecake.id ? data.cheesecake.id : "cheesecake";
-                data.cheesecake.cssClasses = data.cheesecake.cssClasses ? data.cheesecake.cssClasses.unshift(cheeseCakeId):[cheeseCakeId];
+                var cheeseCakeId = data.cheesecake.id || undefined;
 
-                var recipe = CheeseCakeRecipes.getRecipe(cheeseCakeMappings.cheeseCakeRecipeName());
+                var recipe = CheeseCakeRecipes.getRecipe(data.cheesecake.recipeName);
                 var cheeseCakeContainer = recipe(cheeseCakeId, data.cheesecake);
 
-                this._processChildren(cheeseCakeContainer, data.cheesecake.children);
+                if(data.cheesecake.children) {
+                    this._processChildren(cheeseCakeContainer, data.cheesecake.children);
+                }
 
                 return cheeseCakeContainer;
             },
