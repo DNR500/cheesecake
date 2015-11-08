@@ -8,9 +8,9 @@ require.def('cheesecake/cheesecakestats',
             addStatsCallFunction: function (statsFunction) {
                 statsCallFunction = statsFunction;
             },
-            makesStatsCall : function ( countername ) {
+            makesStatsCall : function ( stat ) {
                 if(statsCallFunction){
-                    return statsCallFunction( countername );
+                    return statsCallFunction( stat );
                 }
             }
         };

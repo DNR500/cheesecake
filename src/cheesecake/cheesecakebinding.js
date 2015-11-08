@@ -16,8 +16,8 @@ require.def('cheesecake/cheesecakebinding',
 
             bindWidget: function (widget, action, retrieveActionMethod) {
                 var actionClosure = retrieveActionMethod(action.command);
-                if (action.countername) {
-                    cheeseCakeMappings.addEventListener(widget, action.eventType, cheeseCakeStats.makesStatsCall(action.countername));
+                if (action.stat) {
+                    cheeseCakeMappings.addEventListener(widget, action.eventType, cheeseCakeStats.makesStatsCall(action.stat));
                 }
                 cheeseCakeMappings.addEventListener(widget, action.eventType, actionClosure(action.parameters, widget, retrieveActionMethod));
             },
@@ -29,8 +29,8 @@ require.def('cheesecake/cheesecakebinding',
                         var action = actionsHistoryItem.actions[i];
                         var actionCommand = actions[action.command](action.parameters);
                         cheeseCakeMappings.removeEventListener(widget, action.eventType, actionCommand);
-                        if (action.countername) {
-                            var statsFunction = cheeseCakeStats.makesStatsCall(action.countername);
+                        if (action.stat) {
+                            var statsFunction = cheeseCakeStats.makesStatsCall(action.stat);
                             cheeseCakeMappings.removeEventListener(widget, action.eventType, statsFunction);
                         }
                     }

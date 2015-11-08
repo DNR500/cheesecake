@@ -47,6 +47,7 @@ module.exports = function(grunt) {
             }
         },
 
+
         jasmine: {
             src: ["src/**/*.js","test/utils/mocks/**/*.js"],
             options: {

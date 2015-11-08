@@ -331,9 +331,9 @@ require(
             it("should make a stats call when a countername is featured and event is fired then remove stats call on unbind ", function () {
                 var counterName;
 
-                var statsCallFunction = function(counterNameStr) {
+                var statsCallFunction = function(statObj) {
                     return function(){
-                        counterName = counterNameStr;
+                        counterName = statObj.countername;
                     };
                 };
 
@@ -350,7 +350,9 @@ require(
                                     {
                                         "eventType": "select",
                                         "command": "customActionForTesting",
-                                        "countername": "settings.page.countMe",
+                                        "stat": {
+                                            "countername":"settings.page.countMe"
+                                        },
                                         "parameters": {
                                             "some_value": "parameter passed to action function"
                                         }

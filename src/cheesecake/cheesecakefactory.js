@@ -34,7 +34,11 @@ require.def('cheesecake/cheesecakefactory',
                             childWidgetData.actions);
                     }
 
-                    cheeseCakeMappings.appendChild(parent, childWidget);
+                    if(parent){
+                        cheeseCakeMappings.appendChild(parent, childWidget);
+                    } else {
+                        return childWidget;
+                    }
                 }
             },
 
@@ -43,13 +47,18 @@ require.def('cheesecake/cheesecakefactory',
             },
 
             createCheeseCake: function (data) {
-                var cheeseCakeId = data.cheesecake.id || undefined;
+                var cheesecake = data.cheesecake;
 
-                var recipe = CheeseCakeRecipes.getRecipe(data.cheesecake.recipeName);
-                var cheeseCakeContainer = recipe(cheeseCakeId, data.cheesecake);
+                var recipe = CheeseCakeRecipes.getRecipe(cheesecake.recipeName);
+                var cheeseCakeContainer = recipe(cheesecake.id, cheesecake);
 
-                if(data.cheesecake.children) {
-                    this._processChildren(cheeseCakeContainer, data.cheesecake.children);
+                if (this._isNoneEmptyArray(cheesecake.actions)) {
+                    CheeseCakeActions.bindActionsToWidget(cheeseCakeContainer,
+                        cheesecake.actions);
+                }
+
+                if(cheesecake.children) {
+                    this._processChildren(cheeseCakeContainer, cheesecake.children);
                 }
 
                 return cheeseCakeContainer;
