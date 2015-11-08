@@ -1,6 +1,6 @@
 {
   "name": "Cheesecake",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "build/uncompressed/cheesecake/cheesecakefactory.js",
   "ignore": [
     "src",
