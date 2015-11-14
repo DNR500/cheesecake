@@ -12,9 +12,5 @@
     "Gruntfile.js",
     "package.json",
     "README.md"
-  ],
-  "dependencies": {},
-  "devDependencies": {
-    "requirejs": "~2.1.20"
-  }
+  ]
 }
