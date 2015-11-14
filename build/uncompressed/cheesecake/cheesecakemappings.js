@@ -49,7 +49,6 @@ require.def('cheesecake/cheesecakemappings',
             setRemoveEventListenerFunction : function (newFunction) {
                 _removeEventListener = newFunction;
             },
-
             reset : function () {
                 setDefaultValues();
             },
