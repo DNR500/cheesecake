@@ -20,7 +20,6 @@
   "author": "Nathan Richards <nathan.richards@bbc.co.uk>",
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-jasmine": "^0.8.2",
@@ -30,6 +29,5 @@
     "install": "^0.1.8",
     "npm": "^2.11.1",
     "grunt-bump": "^0.6.0"
-  },
-
+  }
 }
