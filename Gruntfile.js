@@ -47,7 +47,6 @@ module.exports = function(grunt) {
             }
         },
 
-
         jasmine: {
             src: ["src/**/*.js","test/utils/mocks/**/*.js"],
             options: {
@@ -58,6 +57,15 @@ module.exports = function(grunt) {
                 outfile: "reports/jasmine/WebRunner.html",
                 display: "full"
             }
+        },
+
+        bump: {
+            options: {
+                files: ['package.json', 'bower.json'],
+                commitFiles: ['-a'],
+                tagName: '%VERSION%',
+                prereleaseName: false
+            }
         }
     });
 
@@ -66,10 +74,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-jsonlint');
     grunt.loadNpmTasks("grunt-contrib-jasmine");
+    grunt.loadNpmTasks('grunt-bump');
     grunt.loadNpmTasks('grunt-plato');
 
     grunt.registerTask('test', ['jsonlint', 'jshint', 'jasmine']);
     grunt.registerTask('build', ['test', 'clean:build', 'copy:srcToBuild']);
+    grunt.registerTask('release', ['build', 'bump']);
     grunt.registerTask('default', ['test']);
 
 };

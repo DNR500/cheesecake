@@ -1,19 +1,19 @@
 {
   "name": "Cheesecake",
-  "version": "0.0.1",
-  "description": "View abstraction framework - simple framework that allows json templates to be used with any frontend framework",
+  "version": "0.0.4",
+  "description": "View abstraction framework - simple framework that allows json templates to be used with a frontend framework for view construction",
   "scripts": {
-    "test": "grunt check"
+    "test": "test"
   },
   "repository": {
     "type": "git",
-    "url": "*"
+    "url": "git@github.com:DNR500/cheesecake.git"
   },
   "keywords": [
     "Node",
     "Express"
   ],
-  "author": "Nathan Richards",
+  "author": "Nathan Richards <nathan.richards@bbc.co.uk>",
   "license": "ISC",
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -25,6 +25,7 @@
     "grunt-jsonlint": "^1.0.4",
     "grunt-plato": "^1.2.1",
     "install": "^0.1.8",
-    "npm": "^2.11.1"
+    "npm": "^2.11.1",
+    "grunt-bump": "^0.6.0"
   }
 }
