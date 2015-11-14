@@ -1,6 +1,7 @@
 {
   "name": "Cheesecake",
   "version": "0.0.4",
+  "homepage": "https://github.com/DNR500/cheesecake",
   "main": "build/uncompressed/cheesecake/cheesecakefactory.js",
   "ignore": [
     "src",
@@ -12,5 +13,6 @@
     "Gruntfile.js",
     "package.json",
     "README.md"
-  ]
+  ],
+  "dependencies":{}
 }

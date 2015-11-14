@@ -6,15 +6,18 @@
     "test": "test"
   },
   "repository": {
-    "type": "git",
-    "url": "git@github.com:DNR500/cheesecake.git"
+      "type": "git",
+      "url": "git://github.com/DNR500/cheesecake.git"
   },
+  "bugs": {
+      "url": "https://github.com/DNR500/cheesecake/issues"
+  },
+  "homepage": "https://github.com/DNR500/cheesecake",
   "keywords": [
     "Node",
     "Express"
   ],
   "author": "Nathan Richards <nathan.richards@bbc.co.uk>",
-  "license": "ISC",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
@@ -27,5 +30,6 @@
     "install": "^0.1.8",
     "npm": "^2.11.1",
     "grunt-bump": "^0.6.0"
-  }
+  },
+
 }

@@ -1,7 +1,5 @@
 module.exports = function(grunt) {
     'use strict';
-    var jsFiles = ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'];
-    var jsonFiles = ['package.json', 'bower.json', '.jshintrc'];
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -36,12 +34,12 @@ module.exports = function(grunt) {
 
         jsonlint: {
             project: {
-                src: jsonFiles
+                src: ['package.json', 'bower.json', '.jshintrc']
             }
         },
 
         jshint: {
-            files: jsFiles,
+            files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
             options: {
                 jshintrc: '.jshintrc'
             }
