@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         },
 
         copy: {
-          srcToBuild:{
+          setup:{
               files: [
                   {
                       expand: true,

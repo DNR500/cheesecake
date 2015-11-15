@@ -5,6 +5,7 @@
   "scripts": {
     "test": "test"
   },
+  "files":["build/"],
   "repository": {
       "type": "git",
       "url": "git://github.com/DNR500/cheesecake.git"
