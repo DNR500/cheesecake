@@ -18,10 +18,19 @@ bower
 bower install cheesecake
 ```
 
+#### About cheesecake
 
-#### For development 
+The cheesecake library is a set of factories that has been assembled to allow the creation of UI elements using JSON in a declaritive approach. In terms of HTML it provides mechanisms to outline definitions for..
 
-**Commands of note**
+**DOM elements** - which can be defined using recipes.
+
+**Event listeners** - which can be defined using actions.
+
+**Stats** - which can be defined on each action.
+
+Once you have a set of definitions you can use JSON to create your visual component ready for being appended to your DOM.
+
+#### For development of cheesecake - commands of note
 
 **grunt test** - runs tests and lint checks.
 
