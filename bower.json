@@ -1,6 +1,6 @@
 {
   "name": "Cheesecake",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "homepage": "https://github.com/DNR500/cheesecake",
   "description": "View abstraction framework - simple framework that allows json templates to be used with a frontend framework for view construction",
   "main": "build/uncompressed/cheesecake/cheesecakefactory.js",
