@@ -146,7 +146,7 @@ cheesecake.addAction("foobar", function(parameters) {
 cheesecake.addAction("barfoo", function(parameters, widget, getAction) {
     return function(){
         console.log("Hello " + parameters.secondPerson);
-        var actionClosure = getAction("foobar")
+        var actionClosure = getAction("foobar");
         var action = actionClosure(parameters, widget, retrieveAction);
         action();
     };
