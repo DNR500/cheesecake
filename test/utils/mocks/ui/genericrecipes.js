@@ -39,10 +39,10 @@ require.def("mocks/ui/genericrecipes",
               return basicWidget;
           },
           getLabel: function() {
-              return function (uniqueId, data) {
+              return function (data) {
                   var label = Object.create(basicWidget);
                   label.type = "label";
-                  label.id = uniqueId;
+                  label.id = data.id;
                   label.text = data.text;
                   label.getText = function(){
                       return this.text;
@@ -52,11 +52,11 @@ require.def("mocks/ui/genericrecipes",
               };
           },
           getContainer: function() {
-              return function (uniqueId, data) {
+              return function (data) {
                   var container = Object.create(basicWidget);
                   container.type = "container";
                   container.childWidgets = [];
-                  container.id = uniqueId;
+                  container.id = data.id;
                   container.cssClasses = data.cssClasses ? data.cssClasses.slice(0) : undefined;
                   container.appendChildWidget = function(childWidget) {
                         this.childWidgets.push(childWidget);

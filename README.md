@@ -58,13 +58,13 @@ define(
 Use the addRecipe method to create your recipe definition.
 
 ```
-cheesecake.addRecipe("foo", function(id, data, parent) {
+cheesecake.addRecipe("foo", function(data, parent) {
     var span = document.createElement('span');
     span.innerHTML = data.name;
 
     var div = document.createElement('div');
-    if(id){
-    	div.id = id;
+    if(data.id){
+    	div.id = data.id;
     }
     div.innerHTML = data.salutation + " ";
     div.appendChild(span);

@@ -23,8 +23,7 @@ require.def('cheesecake/cheesecakefactory',
                     var childWidgetData = childrenData[i];
                     var recipe = CheeseCakeRecipes.getRecipe(childWidgetData.recipeName);
 
-                    var childWidgetId = childWidgetData.id || undefined;
-                    var childWidget = recipe(childWidgetId, childWidgetData, parent);
+                    var childWidget = recipe(childWidgetData, parent);
 
                     if (this._isNoneEmptyArray(childWidgetData.children)) {
                         this._processChildren(childWidget, childWidgetData.children);
@@ -50,7 +49,7 @@ require.def('cheesecake/cheesecakefactory',
                 var cheesecake = data.cheesecake;
 
                 var recipe = CheeseCakeRecipes.getRecipe(cheesecake.recipeName);
-                var cheeseCakeContainer = recipe(cheesecake.id, cheesecake);
+                var cheeseCakeContainer = recipe(cheesecake);
 
                 if (this._isNoneEmptyArray(cheesecake.actions)) {
                     CheeseCakeActions.bindActionsToWidget(cheeseCakeContainer,

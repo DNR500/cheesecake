@@ -20,8 +20,8 @@ require(
                 };
             };
 
-            var customRecipeForTesting = function(uniqueId, data, parent) {
-                testUniqueId = uniqueId;
+            var customRecipeForTesting = function(data, parent) {
+                testUniqueId = data.id;
                 testChildWidgetData = data;
                 testParent = parent;
             };
