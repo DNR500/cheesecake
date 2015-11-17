@@ -1,6 +1,6 @@
 {
   "name": "cheesecake-core",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "View abstraction framework - simple framework that allows json templates to be used with a frontend framework for view construction",
   "scripts": {
     "test": "test"
