@@ -20,9 +20,9 @@ bower install cheesecake
 
 ### About cheesecake
 
-The cheesecake library is a set of factories that has been assembled to allow the creation of UI elements using JSON in a declaritive approach. In terms of HTML it provides mechanisms to outline definitions for..
+The cheesecake library is a set of factories that has been assembled to allow the creation of UI elements using JSON in a declaritive approach. In terms of TAL it provides mechanisms to outline definitions for..
 
-* **DOM elements** - which can be defined using recipes.
+* **DOM elements/Widgets** - which can be defined using recipes.
 * **Event listeners** - which can be defined using actions.
 * **Stats** - which can be defined on each action.
 
@@ -59,17 +59,10 @@ Use the addRecipe method to create your recipe definition.
 
 ```
 cheesecake.addRecipe("foo", function(data, parent) {
-    var span = document.createElement('span');
-    span.innerHTML = data.name;
-
-    var div = document.createElement('div');
-    if(data.id){
-    	div.id = data.id;
-    }
-    div.innerHTML = data.salutation + " ";
-    div.appendChild(span);
-              
-    return div;
+    var button = new Button(data.id);
+    recipeUtils.addCssClasses(button, data.cssClasses);
+    button.appendChildWidget(new Label(undefined, data.salutation + " " + data.name));
+    return button;
 });  
 
 ```
@@ -78,6 +71,7 @@ After defining your recipe you can use your recipe using a JSON outline. The abo
 ```
 var cheesecakeJson = {
     cheesecake:{
+    	id: "helloButton",
         recipeName: "foo",
         name: "Betty",
         salutation: "Hello"
@@ -86,7 +80,8 @@ var cheesecakeJson = {
 
 var element = cheesecake.createCheeseCake(cheesecakeJson);
 
-document.body.appendChild(element);
+var container = new Container();
+container.appendChildWidget(element);
 ```
 The recipe can be used numberous times.
 
@@ -95,7 +90,7 @@ An overview of the function arguments.
 
 * **id** - this should be unique.
 * **data** - this is the object that defines the recipe, all the nodes that sit at the same level as the recipeName (and that flow off that part of the tree) can be accessed. Ideally you should only read these values and not overwrite them
-* **parent** - this is the parent element to which the element output will be appended. Cheesecake will deal with the appending of an element to its parent for you.
+* **parent** - this is the parent element to which the element output will be appended. Cheesecake will deal with the appending of an element to its parent for you when items are nested in the json.
 
 Note: the return value should always be the element you wish to be appended to the parent.
 
@@ -111,17 +106,18 @@ cheesecake.addAction("bar", function(parameters) {
     };
 });
 ```
-To invoke the action you would use the action as in the following snipet - the inner function would be called when the div dispatches an click event. event objects may be passed as arguments on the inner function block (this depends on the event dispatch of your underlying view framework).
+To invoke the action you would use the action as in the following snipet - the inner function would be called when the foo element dispatches an select event. event objects may be passed as arguments on the inner function block (this depends on the event dispatch of your underlying view framework).
 
 ```
 var cheesecakeJson = {
     cheesecake:{
+    	id: "helloButton",
         recipeName: "foo",
         name: "Betty",
         salutation: "Hello",
         actions:[
         	{
-        		eventType:"click",
+        		eventType:"select",
         		command:"bar"
         	}
         ]
@@ -130,11 +126,12 @@ var cheesecakeJson = {
 
 var element = cheesecake.createCheeseCake(cheesecakeJson);
 
-document.body.appendChild(element);
+var container = new Container();
+container.appendChildWidget(element);
 ```
 
 #### Action chaining
-Actions are little reusable pieces of code and as such, in the spirit of D.R.Y. , you can chain a number of actions. The following example demonstrates calling one action from another
+Actions are little reusable pieces of code and as such, in the spirit of being DRY, you can chain a number of actions. The following example demonstrates calling one action from another
 
 ```
 cheesecake.addAction("foobar", function(parameters) {
@@ -147,19 +144,20 @@ cheesecake.addAction("barfoo", function(parameters, widget, getAction) {
     return function(){
         console.log("Hello " + parameters.secondPerson);
         var actionClosure = getAction("foobar");
-        var action = actionClosure(parameters, widget, retrieveAction);
+        var action = actionClosure(parameters);
         action();
     };
 });
 
 var cheesecakeJson = {
     cheesecake:{
+    	id: "helloButton",
         recipeName: "foo",
         name: "Betty",
         salutation: "Hello",
         actions:[
         	{
-        		eventType:"click",
+        		eventType:"select",
         		parameters: {
         			firstPerson: "Jill",
         			secondPerson: "John"
@@ -172,7 +170,8 @@ var cheesecakeJson = {
 
 var element = cheesecake.createCheeseCake(cheesecakeJson);
 
-document.body.appendChild(element);
+var container = new Container();
+container.appendChildWidget(element);
 ```
 The output should be "Hello John" followed by "Goodbye Jill".
 
@@ -180,10 +179,10 @@ The output should be "Hello John" followed by "Goodbye Jill".
 An overview of the function arguments.
 
 * **parameters** - this is the parameters action that is 
-* **wigdet** - this is the element which is the parent of the the action definition as outlined in the JSON.
+* **wigdet** - this is the element which is the owner of the the action definition as outlined in the JSON.
 * **getAction** - this allows you to access action closures from within other actions.
 
-Note: the return value when defining your actions using the add actions method should always be a function. Actions, as they are fundamentally tied into event dispatches, are closures.
+Note: the return value when defining your actions using the add actions method should always be a function. Actions are fundamentall are closures.
 
 ### Reserved words in cheesecake JSON
 Currently **recipeName**, **actions**, **command**, **eventType**, **parameters** and **children** are reseved key words that Cheesecake needs to operation correctly. You should avoid misuse of these names.
