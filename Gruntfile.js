@@ -15,6 +15,13 @@ module.exports = function(grunt) {
             }
         },
 
+        open : {
+            plato : {
+                path: 'reports/plato/index.html',
+                app: 'Google Chrome'
+            }
+        },
+
         clean: {
           build: ["build/"]
         },
@@ -57,6 +64,12 @@ module.exports = function(grunt) {
             }
         },
 
+        exec: {
+            npm_publish: {
+                command: 'npm publish'
+            }
+        },
+
         bump: {
             options: {
                 files: ['package.json', 'bower.json'],
@@ -75,10 +88,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-jasmine");
     grunt.loadNpmTasks('grunt-bump');
     grunt.loadNpmTasks('grunt-plato');
+    grunt.loadNpmTasks('grunt-open');
+    grunt.loadNpmTasks('grunt-exec');
 
     grunt.registerTask('test', ['jsonlint', 'jshint', 'jasmine']);
     grunt.registerTask('build', ['test', 'clean:build', 'copy:srcToBuild']);
-    grunt.registerTask('release', ['build', 'bump']);
+    grunt.registerTask('release', ['build', 'bump', 'exec:npm_publish']);
+    grunt.registerTask('launch-plato', ['plato', 'open:plato']);
     grunt.registerTask('default', ['test']);
 
 };

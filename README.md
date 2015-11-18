@@ -190,5 +190,5 @@ Currently **recipeName**, **actions**, **command**, **eventType**, **parameters*
 ### For development of cheesecake - commands of note
 * **grunt test** - runs tests and lint checks.
 * **grunt build** - creates a new folder in your project and build the version for distribution.
-* **grunt release** - bumps the version number, creates a number release tag, commits the new tag to git and updates master with a new .
+* **grunt release** - bumps the version number, creates a number release tag, commits the new tag to git and updates master with a new commit. Publishes to npm and bower.
 
