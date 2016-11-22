@@ -1,5 +1,5 @@
 # cheesecake
-A sweet little api that allows you to build components declaritively using JSON.
+A sweet little api that allows you to build components declaritively using JSON. Cheesecake was built for use with a project which at the time was limited to es3.
 
 For a concrete example on how to use cheesecake see the [jTal-adapter](https://github.com/DNR500/jtal-adapter) project. To see both Cheesecake and jTal put to use take a look at [cheesecake-jtal-example](https://github.com/DNR500/cheesecake-jtal-example)
 
